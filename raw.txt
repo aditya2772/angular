@@ -1,0 +1,57 @@
+<div class="col-12">
+                <form name="form">
+                    <div class="form-row">
+                        <div class="form-group col-5">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" name="firstName" id="firstName"
+                                ng-model="newUser.firstName" placeholder="Enter Your Name" ng-minlength="3"
+                                ng-maxlength="5" required>
+                            <div ng-messages="form.firstName.$error" ng-if="form.firstName.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a value for this field.
+                                </div>
+                                <div class="text-danger" ng-message="minlength">First Name At Least 3 Chars Long.</div>
+                                <div class="text-danger" ng-message="maxlength">First Name At Max 5 Chars Long.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" name="lastName" id="lastName"
+                                ng-model="newUser.lastName" placeholder="Enter Your Name" required>
+                            <div ng-messages="form.lastName.$error" ng-if="form.lastName.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a value for this field.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" id="email" ng-model="newUser.email"
+                                placeholder="Enter Your Email" required>
+                            <div ng-messages="form.email.$error" ng-if="form.email.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a value for this field.
+                                </div>
+                                <div class="text-danger" ng-message="email">Please enter valid email.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Contact</label>
+                            <input type="text" class="form-control" name="contact" id="contact"
+                                ng-model="newUser.contact" placeholder="Enter Your Contact" ng-pattern="/^[6-9]\d{9}$/"
+                                required>
+                            <div ng-messages="form.contact.$error" ng-if="form.contact.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a value for this field.
+                                </div>
+                                <div class="text-danger" ng-message="pattern">Please enter valid contact.</div>
+                            </div>
+                        </div>
+                        <div class="col-2 pt-4">
+                            <button class="btn btn-success pt-2" ng-click="addUser()" ng-if="newUser.mode != 'edit'"
+                                ng-disabled="!form.$valid">Add</button>
+                            <button class="btn btn-warning pt-3" ng-click="editUser()" ng-if="newUser.mode == 'edit'"
+                                ng-disabled="!form.$valid">Edit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
